@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Math with Dad – Home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header style="margin-bottom: 18px;">
+      <h1>Math with Dad</h1>
+      <p class="subtitle">
+        Choose a unit to explore. Tap a unit to see its lessons.
+      </p>
+    </header>
+
+    <section class="card unit-card">
+      <div class="card-header unit-header" data-unit="intro-algebra">
+        <div>
+          <h2 style="margin: 0;">Intro to Algebra</h2>
+          <span class="mini-note">Variables, expressions, and equations</span>
+        </div>
+        <span class="badge" id="badge-intro-algebra">Show lessons ⯆</span>
+      </div>
+      <div class="lesson-list" id="lessons-intro-algebra">
+        <ul>
+          <li>
+            <a href="intro-algebra/lesson1-variables.html">
+              Lesson 1 – What is a Variable?
+            </a>
+          </li>
+          <li>
+            <a href="intro-algebra/lesson2-expressions.html">
+              Lesson 2 – Writing and Evaluating Expressions
+            </a>
+          </li>
+          <!-- Add more lessons here as you create them -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- Future units could go here -->
+    <!--
+    <section class="card unit-card">
+      <div class="card-header unit-header" data-unit="geometry">
+        <div>
+          <h2 style="margin: 0;">Geometry Foundations</h2>
+          <span class="mini-note">Shapes, angles, and area</span>
+        </div>
+        <span class="badge" id="badge-geometry">Show lessons ⯆</span>
+      </div>
+      <div class="lesson-list" id="lessons-geometry">
+        <ul>
+          <li><a href="geometry/lesson1.html">Lesson 1 – ...</a></li>
+        </ul>
+      </div>
+    </section>
+    -->
+
+  </div>
+
+  <script>
+    // Simple accordion behavior for units
+    document.querySelectorAll(".unit-header").forEach(header => {
+      header.addEventListener("click", () => {
+        const unit = header.getAttribute("data-unit");
+        const list = document.getElementById("lessons-" + unit);
+        const badge = document.getElementById("badge-" + unit);
+        const isOpen = list.classList.contains("open");
+        document.querySelectorAll(".lesson-list").forEach(l => l.classList.remove("open"));
+        document.querySelectorAll(".badge").forEach(b => b.textContent = "Show lessons ⯆");
+        if (!isOpen) {
+          list.classList.add("open");
+          badge.textContent = "Hide lessons ⯅";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
